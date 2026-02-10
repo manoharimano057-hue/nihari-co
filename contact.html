@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nihari & Co | Contact</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Poppins&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Poppins', sans-serif; background:#fff; color:#180401; overflow-x:hidden; line-height:1.6; }
+
+  /* ===== NAVBAR ===== */
+  .navbar {
+    position:fixed; top:0; width:100%;
+    display:flex; justify-content:space-between; align-items:center;
+    padding:15px 30px; background:rgba(24,4,1,0.95); z-index:1000; flex-wrap:wrap;
+  }
+  .navbar h1 { font-family:'Cinzel', serif; font-size:clamp(20px, 2vw, 26px); color:#C88F2A; }
+  .nav-links { display:flex; gap:20px; flex-wrap:wrap; transition:all 0.3s ease; }
+  .nav-links a { color:#fff; text-decoration:none; font-size:16px; transition:0.3s; }
+  .nav-links a:hover { color:#C88F2A; }
+  .btn-nav { 
+    background:#C88F2A; color:#180401; padding:8px 15px; border-radius:20px; font-weight:bold; 
+    text-decoration:none; white-space:nowrap; text-align:center;
+  }
+
+  /* Hamburger Menu */
+  .menu-toggle { display:none; flex-direction:column; cursor:pointer; }
+  .menu-toggle span { width:25px; height:3px; background:#fff; margin:4px 0; transition:0.3s; }
+
+  @media (max-width:768px) {
+    .nav-links {
+      display:none; flex-direction:column; width:100%;
+      background:rgba(24,4,1,0.98); text-align:center; padding:20px 0; gap:15px;
+    }
+    .nav-links.active { display:flex; }
+    .nav-links a { display:block; margin:0 auto; width:80%; text-align:center; background:none; color:#fff; }
+    .btn-nav { display:block; width:80%; margin:0 auto; text-align:center; background:#C88F2A; color:#180401; }
+    .menu-toggle { display:flex; }
+  }
+
+  /* ===== CONTACT SECTION ===== */
+  .contact-section { padding:120px 5% 50px; max-width:800px; margin:auto; }
+  .contact-section h2 { font-family:'Cinzel', serif; font-size:clamp(26px,3vw,36px); color:#C88F2A; text-align:center; margin-bottom:20px; }
+  .contact-section p { text-align:center; font-size:16px; color:#555; margin-bottom:40px; }
+  .contact-form { display:flex; flex-direction:column; gap:20px; }
+  .contact-form label { font-weight:500; margin-bottom:5px; }
+  .contact-form input, .contact-form textarea {
+    padding:10px 12px; border-radius:5px; border:1px solid #ccc; outline:none; font-size:14px; width:100%;
+  }
+  .contact-form textarea { resize:vertical; min-height:100px; }
+  .contact-form button {
+    background:#C88F2A; color:#180401; padding:12px 20px; border:none; border-radius:25px;
+    font-weight:bold; cursor:pointer; transition:0.3s; font-size:16px;
+  }
+  .contact-form button:hover { background:#180401; color:#C88F2A; border:1px solid #C88F2A; }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background:#0f0201; color:#bbb; padding:40px 20px; text-align:center;
+  }
+  .footer-container {
+    display:flex; flex-wrap:wrap; justify-content:space-around; gap:30px; max-width:1200px; margin:auto;
+  }
+  .footer-section h4 { color:#C88F2A; margin-bottom:10px; }
+  .footer-section a { display:inline-block; color:#bbb; margin:5px 0; text-decoration:none; transition:0.3s; }
+  .footer-section a:hover { color:#C88F2A; }
+
+  /* Subscribe Form */
+  .footer-section form { display:flex; gap:10px; justify-content:center; flex-wrap:nowrap; align-items:center; }
+  .footer-section input { padding:8px 12px; border-radius:5px; border:none; outline:none; width:200px; max-width:70vw; }
+  .footer-section button { padding:8px 15px; border-radius:5px; border:none; background:#C88F2A; color:#180401; cursor:pointer; }
+  .footer-section button:hover { background:#fff; color:#180401; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width:768px) {
+    .contact-section { padding:100px 5% 40px; }
+    .navbar h1 { font-size:22px; }
+    .nav-links { gap:10px; font-size:14px; }
+    .btn-nav { padding:6px 12px; font-size:12px; }
+  }
+  @media (max-width:480px) {
+    .contact-section { padding:80px 5% 30px; }
+    .contact-form input, .contact-form textarea { font-size:12px; }
+    .footer-section form { flex-direction:column; gap:10px; align-items:center; }
+  }
+  @media (max-width:600px) {
+    .footer-container { flex-direction:column; align-items:center; text-align:center; }
+    .footer-section { width:100%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<div class="navbar">
+  <h1>Nihari & Co</h1>
+  <div class="menu-toggle">
+    <span></span><span></span><span></span>
+  </div>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="menu.html">Menu</a>
+    <a href="order.html">Orders</a>
+    <a href="contact.html">Contact</a>
+    <a href="reserve.html" class="btn-nav">Reserve Now</a>
+  </div>
+</div>
+
+<!-- Contact Section -->
+<section class="contact-section">
+  <h2>Contact Us</h2>
+  <p>Have questions or special requests? Send us a message and we'll get back to you shortly!</p>
+
+  <form class="contact-form" id="contactForm">
+    <label for="name">Full Name</label>
+    <input type="text" id="name" placeholder="Your Name" required>
+
+    <label for="email">Email</label>
+    <input type="email" id="email" placeholder="Your Email" required>
+
+    <label for="phone">Phone Number</label>
+    <input type="tel" id="phone" placeholder="+94 77 123 4567" required>
+
+    <label for="message">Message</label>
+    <textarea id="message" placeholder="Your Message" required></textarea>
+
+    <button type="submit"><i class="fa-solid fa-paper-plane"></i> Send Message</button>
+  </form>
+
+  <div style="margin-top:40px;">
+    <h3 style="text-align:center; color:#C88F2A; font-family:'Cinzel', serif; margin-bottom:20px;">Our Location</h3>
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.85017812345!2d79.7456803!3d9.672845!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3afe08eaf5f44f01%3A0x1234567890abcdef!2sNallur%2C%20Jaffna!5e0!3m2!1sen!2slk!4v1700000000000!5m2!1sen!2slk" 
+      width="100%" height="400" style="border:0; border-radius:10px;" allowfullscreen="" loading="lazy"></iframe>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-container">
+    <div class="footer-section">
+      <h4>Contact Us</h4>
+      <p><i class="fa-solid fa-location-dot" style="color:#C88F2A; margin-right:5px;"></i> Nallur, Sri Lanka</p>
+      <p><i class="fa-solid fa-phone" style="color:#C88F2A; margin-right:5px;"></i> +94 76 123 4567</p>
+      <p><i class="fa-solid fa-envelope" style="color:#C88F2A; margin-right:5px;"></i> info@nihariandco.com</p>
+    </div>
+
+    <div class="footer-section">
+      <h4>Quick Links</h4>
+      <a href="index.html">Home</a><br>
+      <a href="about.html">About</a><br>
+      <a href="menu.html">Menu</a><br>
+      <a href="order.html">Orders</a><br>
+      <a href="contact.html">Contact</a>
+    </div>
+
+    <div class="footer-section">
+      <h4>Follow Us</h4>
+      <a href="#"><i class="fa-brands fa-facebook" style="color:#C88F2A; margin-right:5px;"></i> Facebook</a><br>
+      <a href="#"><i class="fa-brands fa-instagram" style="color:#C88F2A; margin-right:5px;"></i> Instagram</a><br>
+      <a href="#"><i class="fa-brands fa-twitter" style="color:#C88F2A; margin-right:5px;"></i> Twitter</a>
+    </div>
+
+    <div class="footer-section">
+      <h4>Subscribe</h4>
+      <form>
+        <input type="email" placeholder="Your Email" required>
+        <button type="submit"><i class="fa-solid fa-paper-plane" style="color:#C88F2A; margin-right:5px;"></i> Subscribe</button>
+      </form>
+    </div>
+  </div>
+  <p style="margin-top:20px;">&copy; 2025 Nihari & Co | All Rights Reserved</p>
+</footer>
+
+<script>
+  const toggle = document.querySelector('.menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  toggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+
+  document.getElementById('contactForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    alert("Thank you! Your message has been sent.");
+    this.reset();
+  });
+</script>
+
+</body>
+</html>

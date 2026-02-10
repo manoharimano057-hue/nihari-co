@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nihari & Co | About</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Poppins&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family:'Poppins', sans-serif;
+      background:#fff;
+      color:#180401;
+      overflow-x:hidden;
+    }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      position:fixed;
+      top:0;
+      width:100%;
+      background:rgba(24,4,1,0.95);
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:15px 30px;
+      z-index:1000;
+      flex-wrap:wrap;
+    }
+
+    .navbar h1 {
+      font-family:'Cinzel', serif;
+      font-size:clamp(20px, 2vw, 26px);
+      color:#C88F2A;
+    }
+
+    .nav-links {
+      display:flex;
+      gap:20px;
+      flex-wrap:wrap;
+      transition:all 0.3s ease;
+    }
+
+    .nav-links a {
+      color:#fff;
+      text-decoration:none;
+      font-size:16px;
+      transition:0.3s;
+    }
+
+    .nav-links a:hover { color:#C88F2A; }
+
+    .btn-nav {
+      background:#C88F2A;
+      color:#180401;
+      padding:8px 15px;
+      border-radius:20px;
+      font-weight:bold;
+      text-decoration:none;
+      white-space:nowrap;
+    }
+
+    /* Hamburger Menu */
+    .menu-toggle {
+      display:none;
+      flex-direction:column;
+      cursor:pointer;
+    }
+    .menu-toggle span {
+      width:25px; height:3px;
+      background:#fff;
+      margin:4px 0;
+      transition:0.3s;
+    }
+
+    @media (max-width:768px) {
+      .nav-links {
+        display:none;
+        flex-direction:column;
+        width:100%;
+        background:rgba(24,4,1,0.98);
+        text-align:center;
+        padding:20px 0;
+      }
+      .nav-links.active { display:flex; }
+      .menu-toggle { display:flex; }
+    }
+
+    /* ===== STORY ===== */
+    .story {
+      background:#fff;
+      padding:120px 10% 80px;
+    }
+
+    .story-container {
+      display:flex;
+      align-items:center;
+      gap:50px;
+      max-width:1200px;
+      margin:auto;
+    }
+
+    .story-image img {
+      width:100%;
+      max-width:480px;
+      border-radius:15px;
+      box-shadow:0 4px 10px rgba(0,0,0,0.3);
+      object-fit:cover;
+    }
+
+    .story-text h2 {
+      font-family:'Cinzel', serif;
+      color:#C88F2A;
+      font-size:clamp(26px, 3vw, 36px);
+      margin-bottom:15px;
+    }
+
+    .story-text p {
+      font-size:16px;
+      color:#444;
+      line-height:1.8;
+      margin-bottom:15px;
+    }
+
+    /* ===== CHEF ===== */
+    .chef {
+      background:#fdf6f0;
+      padding:100px 10%;
+    }
+
+    .chef-container {
+      display:flex;
+      align-items:center;
+      gap:60px;
+      max-width:1200px;
+      margin:auto;
+    }
+
+    .chef-image img {
+      width:100%;
+      max-width:480px;
+      border-radius:15px;
+      box-shadow:0 4px 10px rgba(200,143,42,0.3);
+      object-fit:cover;
+    }
+
+    .chef-text h2 {
+      font-family:'Cinzel', serif;
+      color:#C88F2A;
+      font-size:clamp(26px, 3vw, 36px);
+      margin-bottom:15px;
+    }
+
+    .chef-text p {
+      font-size:16px;
+      line-height:1.8;
+      margin-bottom:15px;
+    }
+
+    /* ===== ROOMS ===== */
+    .rooms {
+      padding:100px 5%;
+      text-align:center;
+    }
+    .rooms h2 {
+      font-family:'Cinzel', serif;
+      color:#C88F2A;
+      font-size:clamp(24px, 3vw, 36px);
+      margin-bottom:15px;
+    }
+    .rooms p {
+      font-size:16px;
+      color:#333;
+      margin-bottom:40px;
+      line-height:1.7;
+    }
+    .rooms-gallery {
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+      gap:25px;
+      justify-items:center;
+    }
+    .room-card {
+      position:relative;
+      overflow:hidden;
+      border-radius:15px;
+      box-shadow:0 6px 15px rgba(0,0,0,0.1);
+      transition:0.3s;
+    }
+    .room-card img {
+      width:100%;
+      height:230px;
+      object-fit:cover;
+      transition:transform 0.3s ease;
+    }
+    .room-card:hover img { transform:scale(1.05); }
+    .caption {
+      position:absolute;
+      bottom:0;
+      width:100%;
+      text-align:center;
+      font-weight:600;
+      color:#fff;
+      background:rgba(0,0,0,0.5);
+      padding:8px 0;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background:#0f0201;
+      color:#bbb;
+      padding:40px 20px;
+      text-align:center;
+    }
+    .footer-container {
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:space-around;
+      gap:30px;
+      max-width:1200px;
+      margin:auto;
+    }
+    .footer-section h4 {
+      color:#C88F2A;
+      margin-bottom:10px;
+    }
+    .footer-section a {
+      color:#bbb;
+      text-decoration:none;
+      display:inline-block;
+      margin:5px 0;
+      transition:0.3s;
+    }
+    .footer-section a:hover { color:#C88F2A; }
+
+    /* ===== FIXED SUBSCRIBE FORM ===== */
+    .footer-section form {
+      display:flex;
+      gap:10px;
+      justify-content:center;
+      align-items:center;
+      flex-wrap:nowrap; /* keep input and button side by side */
+    }
+
+    .footer-section input {
+      padding:8px 12px;
+      border-radius:5px;
+      border:none;
+      outline:none;
+      width:200px;
+      max-width:70vw; /* responsive */
+    }
+
+    .footer-section button {
+      padding:8px 15px;
+      border-radius:5px;
+      border:none;
+      background:#C88F2A;
+      color:#180401;
+      cursor:pointer;
+      white-space:nowrap; /* prevent wrapping */
+    }
+
+    .footer-section button:hover {
+      background:#fff;
+      color:#180401;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width:768px) {
+      .story-container, .chef-container {
+        flex-direction:column;
+        text-align:center;
+      }
+      .footer-container {
+        flex-direction:column;
+        align-items:center;
+        text-align:center;
+      }
+      .footer-section form {
+        flex-direction:column; /* only stack if very narrow */
+        width:100%;
+        max-width:300px;
+      }
+      .footer-section input, .footer-section button {
+        width:100%;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <h1>Nihari & Co</h1>
+    <div class="menu-toggle">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="menu.html">Menu</a>
+      <a href="order.html">Orders</a>
+      <a href="contact.html">Contact</a>
+      <a href="reserve.html" class="btn-nav">Reserve Now</a>
+    </div>
+  </div>
+
+  <!-- Story -->
+  <section class="story">
+    <div class="story-container">
+      <div class="story-image">
+        <img src="our.jpg" alt="Our Story">
+      </div>
+      <div class="story-text">
+        <h2>Our Story</h2>
+        <p>Nihari & Co was born out of a passion to preserve the rich culinary traditions of South Asia. What began as a humble family recipe has evolved into a luxurious dining experience where heritage meets modern artistry.</p>
+        <p>Step into our world — where the aroma of slow-cooked spices meets the elegance of fine dining, and every meal tells a story worth remembering.</p>
+        <a href="menu.html" class="btn gold">Discover Our Menu</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chef -->
+  <section class="chef">
+    <div class="chef-container">
+      <div class="chef-text">
+        <h2>Our Culinary Master</h2>
+        <p>Behind every exquisite dish stands our head chef, <strong>Chef Prem </strong> — a visionary who brings heritage recipes to life with a modern twist.</p>
+        <p>With over two decades of experience, Chef Aarav blends traditional South Asian flavors with contemporary techniques, creating plates that are as beautiful as they are flavorful.</p>
+        <a href="menu.html" class="btn gold">Explore Signature Dishes</a>
+      </div>
+      <div class="chef-image">
+        <img src="our story.jpg" alt="Head Chef Aarav Khan">
+      </div>
+    </div>
+  </section>
+
+  <!-- Rooms -->
+  <section class="rooms">
+    <h2>Our Rooms</h2>
+    <p>Step into comfort and luxury — elegantly designed rooms with modern amenities, soothing lighting, and a serene atmosphere for a memorable stay.</p>
+    <div class="rooms-gallery">
+      <div class="room-card">
+        <img src="standard.jpg" alt="Standard Room">
+        <div class="caption">Standard Room</div>
+      </div>
+      <div class="room-card">
+        <img src="deluxe room.jpg" alt="Deluxe Room">
+        <div class="caption">Deluxe Room</div>
+      </div>
+      <div class="room-card">
+        <img src="vip suite.jpg" alt="VIP Suite">
+        <div class="caption">VIP Suite</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section">
+        <h4>Contact Us</h4>
+        <p><i class="fa-solid fa-location-dot" style="color:#C88F2A; margin-right:5px;"></i> Nallur, Sri Lanka</p>
+        <p><i class="fa-solid fa-phone" style="color:#C88F2A; margin-right:5px;"></i> +94 76 123 4567</p>
+        <p><i class="fa-solid fa-envelope" style="color:#C88F2A; margin-right:5px;"></i> info@nihariandco.com</p>
+      </div>
+
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <a href="index.html">Home</a><br>
+        <a href="about.html">About</a><br>
+        <a href="menu.html">Menu</a><br>
+        <a href="order.html">Orders</a><br>
+        <a href="contact.html">Contact</a>
+      </div>
+
+      <div class="footer-section">
+        <h4>Follow Us</h4>
+        <a href="#"><i class="fa-brands fa-facebook" style="color:#C88F2A; margin-right:5px;"></i> Facebook</a><br>
+        <a href="#"><i class="fa-brands fa-instagram" style="color:#C88F2A; margin-right:5px;"></i> Instagram</a><br>
+        <a href="#"><i class="fa-brands fa-twitter" style="color:#C88F2A; margin-right:5px;"></i> Twitter</a>
+      </div>
+
+      <div class="footer-section">
+        <h4>Subscribe</h4>
+        <form>
+          <input type="email" placeholder="Your Email" required>
+          <button type="submit"><i class="fa-solid fa-paper-plane" style="color:#C88F2A; margin-right:5px;"></i> Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <p style="margin-top:20px;">&copy; 2025 Nihari & Co | All Rights Reserved</p>
+  </footer>
+
+  <script>
+    const toggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    toggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+  </script>
+
+</body>
+</html>

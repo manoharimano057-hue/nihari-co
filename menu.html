@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nihari & Co | Menu</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Poppins&display=swap" rel="stylesheet" />
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      background: #fff;
+    }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(24, 4, 1, 0.95);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 50px;
+      z-index: 1000;
+    }
+
+    .navbar h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 24px;
+      color: #C88F2A;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover { color: #C88F2A; }
+
+    .btn-nav {
+      background: #C88F2A;
+      color: #180401;
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-weight: bold;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    /* ===== HAMBURGER ===== */
+    .hamburger {
+      display: none;
+      font-size: 22px;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    @media (max-width: 900px) {
+      .nav-links {
+        position: absolute;
+        top: 65px;
+        right: 0;
+        background: rgba(24, 4, 1, 0.97);
+        width: 100%;
+        flex-direction: column;
+        text-align: center;
+        max-height: 0;
+        overflow: hidden;
+        transition: all 0.3s ease;
+      }
+
+      .nav-links.show {
+        max-height: 300px;
+        padding: 20px 0;
+      }
+
+      .hamburger { display: block; }
+    }
+
+    /* ===== HERO ===== */
+    .menu-hero {
+      position: relative;
+      background: url(susi.jpg) no-repeat center center/cover;
+      height: 80vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      overflow: hidden;
+    }
+    .menu-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 1;
+    }
+    .menu-hero-content {
+      position: relative;
+      z-index: 2;
+    }
+    .menu-hero h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 50px;
+      margin-bottom: 15px;
+      color: #fff;
+    }
+    .menu-hero p {
+      font-size: 18px;
+      margin-bottom: 30px;
+      color: #fff;
+    }
+    .menu-hero .btn {
+      padding: 14px 30px;
+      border: 2px solid #C88F2A;
+      border-radius: 30px;
+      color: #C88F2A;
+      background: transparent;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.4s;
+    }
+    .menu-hero .btn.gold {
+      background: #C88F2A;
+      color: #180401;
+    }
+    .menu-hero .btn.gold:hover {
+      background: transparent;
+      color: #C88F2A;
+    }
+
+    /* ===== MENU ===== */
+    .menu-categories {
+      margin: 40px 0;
+      text-align: center;
+    }
+    .filter-btn {
+      padding: 10px 20px;
+      margin: 5px;
+      border: 2px solid #C88F2A;
+      background: transparent;
+      color: #C88F2A;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: 0.3s;
+      font-weight: 500;
+    }
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: #C88F2A;
+      color: #180401;
+    }
+
+    .menu-highlights {
+      padding: 50px 5%;
+      background: #fdf6f0;
+      text-align: center;
+    }
+    .menu-highlights h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 36px;
+      color: #C88F2A;
+      margin-bottom: 10px;
+    }
+    .menu-highlights p {
+      font-size: 16px;
+      color: #555;
+      margin-bottom: 40px;
+    }
+    .menu-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+    }
+    .menu-card {
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      overflow: hidden;
+      width: 300px;
+      text-align: left;
+      transition: 0.3s;
+    }
+    .menu-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+    }
+    .menu-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .menu-card h4 {
+      font-family: 'Cinzel', serif;
+      font-size: 22px;
+      color: #C88F2A;
+      margin: 15px;
+    }
+    .menu-card p {
+      font-size: 14px;
+      color: #555;
+      padding: 0 15px 10px;
+    }
+    .price {
+      font-weight: bold;
+      padding: 0 15px 15px;
+      color: #180401;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* ===== ROOMS ===== */
+    .rooms-prices {
+      padding: 50px 5%;
+      background: #fdf6f0;
+      text-align: center;
+    }
+    .rooms-prices h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 36px;
+      color: #C88F2A;
+      margin-bottom: 10px;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #0f0201;
+      color: #bbb;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 30px;
+      max-width: 1200px;
+      margin: auto;
+      padding-bottom: 20px;
+    }
+    .footer-section h4 {
+      color: #C88F2A;
+      margin-bottom: 10px;
+    }
+    .footer-section a {
+      display: inline-block;
+      color: #bbb;
+      margin: 5px 10px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    .footer-section a:hover { color: #C88F2A; }
+
+    .footer-section form {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .footer-section input {
+      padding: 8px 12px;
+      border-radius: 5px;
+      border: none;
+      outline: none;
+      width: 200px;
+      max-width: 100%;
+    }
+    .footer-section button {
+      padding: 8px 15px;
+      border-radius: 5px;
+      border: none;
+      background: #C88F2A;
+      color: #180401;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .footer-section button:hover {
+      background: #fff;
+      color: #180401;
+    }
+
+    @media (max-width: 768px) {
+      .menu-card { width: 80%; }
+      .menu-hero h2 { font-size: 36px; }
+      .menu-hero p { font-size: 14px; }
+    }
+
+    @media (max-width: 600px) {
+      .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .footer-section form {
+        flex-direction: column;
+      }
+      .footer-section input, .footer-section button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <div class="navbar">
+    <h1>Nihari & Co</h1>
+    <div class="hamburger"><i class="fa-solid fa-bars"></i></div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="menu.html" class="active">Menu</a>
+      <a href="order.html">Orders</a>
+      <a href="contact.html">Contact</a>
+      <a href="reserve.html" class="btn-nav">Reserve Now</a>
+    </div>
+  </div>
+
+  <!-- ===== HERO ===== -->
+  <section class="menu-hero">
+    <div class="menu-hero-content">
+      <h2>Our Menu</h2>
+      <p>A Taste of Tradition & Excellence</p>
+      <a href="reserve.html" class="btn gold">Reserve Now</a>
+    </div>
+  </section>
+
+  <!-- ===== MENU FILTER ===== -->
+  <section class="menu-categories">
+    <button class="filter-btn active" data-category="all">All</button>
+    <button class="filter-btn" data-category="starters">Starters</button>
+    <button class="filter-btn" data-category="main">Main Courses</button>
+    <button class="filter-btn" data-category="pasta">Pasta/Noodles</button>
+    <button class="filter-btn" data-category="beverages">Beverages</button>
+  </section>
+
+  <!-- ===== MENU CARDS ===== -->
+  <section class="menu-highlights" id="menu">
+    <div class="section-header">
+      <h3>Our Specialties</h3>
+      <p>A taste of tradition crafted with love.</p>
+    </div>
+    <div class="menu-cards">
+      <div class="menu-card" data-category="pasta">
+        <img src="Chicken Alfredo Pasta.jpg" alt="Chicken Alfredo Pasta">
+        <h4>Chicken Alfredo Pasta</h4>
+        <p>Rich and creamy fettuccine pasta tossed with grilled chicken and parmesan.</p>
+        <p class="price">LKR 1,100 <i class="fa-solid fa-heart favorite"></i></p>
+      </div>
+      <div class="menu-card" data-category="starters">
+        <img src="tikka.jpg" alt="Chicken Tikka">
+        <h4>Chicken Tikka</h4>
+        <p>Juicy chicken pieces marinated in rich spices and grilled.</p>
+        <p class="price">LKR 1,000 <i class="fa-solid fa-heart favorite"></i></p>
+      </div>
+      <div class="menu-card" data-category="main">
+        <img src="mutton soup.jpg" alt="Mutton Soup">
+        <h4>Mutton Soup</h4>
+        <p>Warm and flavorful broth with tender mutton pieces and aromatic spices.</p>
+        <p class="price">LKR 650 <i class="fa-solid fa-heart favorite"></i></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ROOMS ===== -->
+  <section class="rooms-prices">
+    <div class="section-header">
+      <h3>Our Rooms & Prices</h3>
+      <p>Comfortable stays crafted for your perfect experience</p>
+    </div>
+    <div class="menu-cards">
+      <div class="menu-card">
+        <img src="deluxe room.jpg" alt="Deluxe Room">
+        <h4>Deluxe Room</h4>
+        <p>Spacious room with king-sized bed, modern amenities, and stunning views.</p>
+        <p class="price">LKR 8,000 per Night</p>
+      </div>
+      <div class="menu-card">
+        <img src="vip suite.jpg" alt="Suite Room">
+        <h4>Suite Room</h4>
+        <p>Luxury suite with separate living area, premium furnishings, and a balcony.</p>
+        <p class="price">LKR 12,000 per Night</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section">
+        <h4>Contact Us</h4>
+        <p><i class="fa-solid fa-location-dot" style="color:#C88F2A; margin-right:5px;"></i> Nallur, Sri Lanka</p>
+        <p><i class="fa-solid fa-phone" style="color:#C88F2A; margin-right:5px;"></i> +94 76 877 4033</p>
+        <p><i class="fa-solid fa-envelope" style="color:#C88F2A; margin-right:5px;"></i> info@nihariandco.com</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <a href="index.html">Home</a><br>
+        <a href="about.html">About</a><br>
+        <a href="menu.html">Menu</a><br>
+        <a href="order.html">Orders</a><br>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-section">
+        <h4>Follow Us</h4>
+        <a href="#"><i class="fa-brands fa-facebook"></i> Facebook</a><br>
+        <a href="#"><i class="fa-brands fa-instagram"></i> Instagram</a><br>
+        <a href="#"><i class="fa-brands fa-twitter"></i> Twitter</a>
+      </div>
+      <div class="footer-section">
+        <h4>Subscribe</h4>
+        <form>
+          <input type="email" placeholder="Your Email" required>
+          <button type="submit"><i class="fa-solid fa-paper-plane"></i> Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <p style="margin-top: 20px;">&copy; 2025 Nihari & Co | All Rights Reserved</p>
+  </footer>
+
+  <script>
+    // Filter Menu
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const menuCards = document.querySelectorAll('.menu-card');
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const category = btn.dataset.category;
+        menuCards.forEach(card => {
+          card.style.display = category === 'all' || card.dataset.category === category ? 'block' : 'none';
+        });
+      });
+    });
+
+    // Hamburger Menu
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+      hamburger.innerHTML = navLinks.classList.contains('show') 
+        ? '<i class="fa-solid fa-xmark"></i>' 
+        : '<i class="fa-solid fa-bars"></i>';
+    });
+  </script>
+</body>
+</html>

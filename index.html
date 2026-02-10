@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nihari & Co | Home</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Poppins&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family:'Poppins', sans-serif;
+      background:#fff;
+      color:#180401;
+      overflow-x:hidden;
+    }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      position:fixed;
+      top:0;
+      width:100%;
+      background:rgba(24,4,1,0.95);
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:15px 30px;
+      z-index:1000;
+      flex-wrap:wrap;
+    }
+
+    .navbar h1 {
+      font-family:'Cinzel', serif;
+      font-size:clamp(20px, 2vw, 26px);
+      color:#C88F2A;
+    }
+
+    .nav-links {
+      display:flex;
+      gap:20px;
+      flex-wrap:wrap;
+      transition:all 0.3s ease;
+    }
+
+    .nav-links a {
+      color:#fff;
+      text-decoration:none;
+      font-size:16px;
+      transition:0.3s;
+    }
+
+    .nav-links a:hover { color:#C88F2A; }
+
+    .btn-nav {
+      background:#C88F2A;
+      color:#180401;
+      padding:8px 15px;
+      border-radius:20px;
+      font-weight:bold;
+      text-decoration:none;
+      white-space:nowrap;
+    }
+
+    /* Hamburger Menu */
+    .menu-toggle {
+      display:none;
+      flex-direction:column;
+      cursor:pointer;
+    }
+    .menu-toggle span {
+      width:25px; height:3px;
+      background:#fff;
+      margin:4px 0;
+      transition:0.3s;
+    }
+
+    @media (max-width:768px) {
+      .nav-links {
+        display:none;
+        flex-direction:column;
+        width:100%;
+        background:rgba(24,4,1,0.98);
+        text-align:center;
+        padding:20px 0;
+      }
+      .nav-links.active { display:flex; }
+      .menu-toggle { display:flex; }
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative;
+      background: url('home image.avif') no-repeat center center/cover;
+      height: 90vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      padding: 0 20px;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0; left:0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+    }
+
+    .hero > div { position: relative; z-index:2; }
+
+    .hero h2 {
+      font-family:'Cinzel', serif;
+      font-size: clamp(30px, 5vw, 60px);
+      margin-bottom:15px;
+    }
+
+    .hero p { font-size: clamp(14px, 2vw, 20px); margin-bottom:30px; }
+
+    .btn {
+      padding:12px 25px;
+      border:2px solid #C88F2A;
+      border-radius:30px;
+      text-decoration:none;
+      color:#C88F2A;
+      background:transparent;
+      font-weight:600;
+      text-transform:uppercase;
+      letter-spacing:1px;
+      transition:all 0.4s ease;
+      margin:5px;
+    }
+
+    .btn:hover {
+      background:#C88F2A;
+      color:#180401;
+      transform:translateY(-3px);
+    }
+
+    .btn.gold {
+      background:#C88F2A;
+      color:#180401;
+      border:2px solid #C88F2A;
+    }
+
+    .btn.gold:hover {
+      background:transparent;
+      color:#C88F2A;
+    }
+
+    /* ===== ABOUT SECTION ===== */
+    .about {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 50px;
+      padding: 80px 5%;
+      background: #fff;
+      flex-wrap: wrap;
+    }
+
+    .about-image img {
+      width: 100%;
+      max-width: 500px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    .about-text { max-width:500px; text-align:left; }
+
+    .about-text h3 {
+      font-family:'Cinzel', serif;
+      font-size:clamp(24px,3vw,36px);
+      color:#C88F2A;
+      margin-bottom:15px;
+    }
+
+    .about-text p { font-size:16px; color:#333; margin-bottom:20px; }
+
+    @media (max-width:768px) { .about { flex-direction:column; text-align:center; } }
+
+    /* ===== MENU HIGHLIGHTS ===== */
+    .menu-highlights { padding:80px 5%; background:#fdf6f0; text-align:center; }
+    .menu-cards {
+      display:flex;
+      justify-content:center;
+      gap:30px;
+      flex-wrap:wrap;
+    }
+    .menu-card {
+      background:#fff;
+      border-radius:15px;
+      box-shadow:0 8px 20px rgba(0,0,0,0.1);
+      overflow:hidden;
+      transition:0.3s;
+      max-width:300px;
+      text-align:center;
+      padding:20px;
+    }
+    .menu-card img { width:80px; height:80px; object-fit:cover; border-radius:50%; margin-bottom:15px; }
+    .menu-card h4 { margin-bottom:10px; color:#222; }
+    .menu-card p { font-size:0.95rem; color:#555; margin-bottom:10px; }
+
+    /* ===== GALLERY ===== */
+    .gallery { padding:80px 5%; background:#fff; text-align:center; }
+    .gallery-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; }
+    .gallery-item img { width:100%; height:200px; object-fit:cover; border-radius:10px; transition: transform 0.4s ease; }
+    .gallery-item:hover img { transform:scale(1.1); }
+
+    /* ===== TESTIMONIALS ===== */
+    .testimonials { padding:60px 20px; background:#f9f9f9; text-align:center; }
+    .testimonials .section-header h3 { font-family:'Cinzel', serif; font-size:2.2rem; margin-bottom:10px; color:#333; }
+    .testimonials .section-header p { font-size:1rem; color:#666; margin-bottom:40px; }
+    .testimonials .menu-cards { display:flex; justify-content:center; gap:30px; flex-wrap:wrap; }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background:#0f0201;
+      color:#bbb;
+      padding:40px 20px;
+      text-align:center;
+    }
+    .footer-container {
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:space-around;
+      gap:30px;
+      max-width:1200px;
+      margin:auto;
+    }
+    .footer-section h4 { color:#C88F2A; margin-bottom:10px; }
+    .footer-section a {
+      color:#bbb; text-decoration:none; display:inline-block; margin:5px 0;
+      transition:0.3s;
+    }
+    .footer-section a:hover { color:#C88F2A; }
+
+    .footer-section form {
+      display:flex;
+      gap:10px;
+      justify-content:center;
+      align-items:center;
+      flex-wrap:nowrap;
+    }
+    .footer-section input {
+      padding:8px 12px;
+      border-radius:5px;
+      border:none;
+      outline:none;
+      width:200px;
+      max-width:70vw;
+    }
+    .footer-section button {
+      padding:8px 15px;
+      border-radius:5px;
+      border:none;
+      background:#C88F2A;
+      color:#180401;
+      cursor:pointer;
+      white-space:nowrap;
+    }
+    .footer-section button:hover {
+      background:#fff;
+      color:#180401;
+    }
+
+    @media(max-width:768px){
+      .footer-container { flex-direction:column; align-items:center; text-align:center; }
+      .footer-section form { flex-direction:column; width:100%; max-width:300px; }
+      .footer-section input, .footer-section button { width:100%; }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <h1>Nihari & Co</h1>
+    <div class="menu-toggle">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="nav-links">
+      <a href="#" class="active">Home</a>
+      <a href="about.html">About</a>
+      <a href="menu.html">Menu</a>
+      <a href="order.html">Orders</a>
+      <a href="contact.html">Contact</a>
+      <a href="reserve.html" class="btn-nav">Reserve Now</a>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div>
+      <h2>Nihari & Co</h2>
+      <p>Where Heritage Meets Taste</p>
+      <a href="reserve.html" class="btn gold">Reserve Now</a>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about">
+    <div class="about-image">
+      <img src="interior 11.jpg" alt="Nihari & Co">
+    </div>
+    <div class="about-text">
+      <h3>Our Story</h3>
+      <p>At Nihari & Co, we bring centuries of culinary heritage to your table. From carefully selected spices to slow-cooked perfection, every dish tells a story of tradition, passion, and flavor.</p>
+      <a href="about.html" class="btn gold">Read More</a>
+    </div>
+  </section>
+
+  <!-- Menu Highlights -->
+  <section class="menu-highlights">
+    <div class="section-header">
+      <h3>Our Specialties</h3>
+      <p>A taste of tradition crafted with love.</p>
+    </div>
+    <div class="menu-cards">
+      <div class="menu-card">
+        <img src="massaman-beef.webp" alt="Dish 1">
+        <h4>Nihari Classic</h4>
+        <p>Slow-cooked to perfection with secret spices.</p>
+      </div>
+      <div class="menu-card">
+        <img src="herritate briyani.jpg" alt="Dish 2">
+        <h4>Heritage Biryani</h4>
+        <p>Fragrant rice layered with tender meats and spices.</p>
+      </div>
+      <div class="menu-card">
+        <img src="kebab1.jpg" alt="Dish 3">
+        <h4>Signature Kebabs</h4>
+        <p>Char-grilled with a perfect blend of herbs.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="gallery">
+    <div class="section-header">
+      <h3>Our Gallery</h3>
+      <p>Take a look at our delicious dishes and cozy ambience.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item"><img src="moongil chair 3.jpg" alt="Dish 1"></div>
+      <div class="gallery-item"><img src="reception.jpg" alt="Interior 1"></div>
+      <div class="gallery-item"><img src="swimming pool.jpg" alt="Dish 2"></div>
+      <div class="gallery-item"><img src="bar.jpg" alt="Interior 2"></div>
+      <div class="gallery-item"><img src="roasted.jpg" alt="Dish 3"></div>
+      <div class="gallery-item"><img src="chef fire.jpg" alt="Dish 4"></div>
+      <div class="gallery-item"><img src="prawn.jpg" alt="Interior 3"></div>
+      <div class="gallery-item"><img src="kitchen.jpg" alt="Dish 5"></div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials">
+    <div class="section-header">
+      <h3>What Our Guests Say</h3>
+      <p>Sharing experiences about our food, rooms, and hospitality</p>
+    </div>
+    <div class="menu-cards">
+      <div class="menu-card">
+        <img src="Andrew.jpg" alt="Guest 1">
+        <h4>Andrew</h4>
+        <p>"The biryani was absolutely delicious and the room was spotless. Highly recommend!"</p>
+        <p class="price"><i class="fa-solid fa-star" style="color:#C88F2A;"></i> 5/5</p>
+      </div>
+      <div class="menu-card">
+        <img src="zaarah.jpg" alt="Guest 2">
+        <h4>Zaarah Wilson</h4>
+        <p>"Amazing hospitality. The staff made our stay memorable, and the food was top-notch."</p>
+        <p class="price"><i class="fa-solid fa-star" style="color:#C88F2A;"></i> 5/5</p>
+      </div>
+      <div class="menu-card">
+        <img src="Harish.jpg" alt="Guest 3">
+        <h4>Harish</h4>
+        <p>"From the delicious curries to the warm service, everything exceeded my expectations."</p>
+        <p class="price"><i class="fa-solid fa-star" style="color:#C88F2A;"></i> 5/5</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section">
+        <h4>Contact Us</h4>
+        <p><i class="fa-solid fa-location-dot" style="color:#C88F2A; margin-right:5px;"></i> Nallur, Sri Lanka</p>
+        <p><i class="fa-solid fa-phone" style="color:#C88F2A; margin-right:5px;"></i> +94 76 123 4567</p>
+        <p><i class="fa-solid fa-envelope" style="color:#C88F2A; margin-right:5px;"></i> info@nihariandco.com</p>
+      </div>
+
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <a href="index.html">Home</a><br>
+        <a href="about.html">About</a><br>
+        <a href="menu.html">Menu</a><br>
+        <a href="order.html">Orders</a><br>
+        <a href="contact.html">Contact</a>
+      </div>
+
+      <div class="footer-section">
+        <h4>Follow Us</h4>
+        <a href="#"><i class="fa-brands fa-facebook" style="color:#C88F2A; margin-right:5px;"></i> Facebook</a><br>
+        <a href="#"><i class="fa-brands fa-instagram" style="color:#C88F2A; margin-right:5px;"></i> Instagram</a><br>
+        <a href="#"><i class="fa-brands fa-twitter" style="color:#C88F2A; margin-right:5px;"></i> Twitter</a>
+      </div>
+
+      <div class="footer-section">
+        <h4>Subscribe</h4>
+        <form>
+          <input type="email" placeholder="Your Email" required>
+          <button type="submit"><i class="fa-solid fa-paper-plane" style="color:#C88F2A; margin-right:5px;"></i> Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <p style="margin-top:20px;">&copy; 2025 Nihari & Co | All Rights Reserved</p>
+  </footer>
+
+  <script>
+    const toggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    toggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+  </script>
+
+</body>
+</html>
